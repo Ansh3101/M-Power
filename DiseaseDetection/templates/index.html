@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css%}
+<link rel="stylesheet" href="{% static 'css/landing.css'%}">
+{% endblock %}
+{% block content %}
+<div class="image">
+  <div class="text">
+    <h1 class="tag_line">M-POWER</h1>
+    <h3 class="comitted">
+      A web application that reads MRI scans and various other reports
+    </h3>
+  </div>
+  <img class="wave" src="{% static 'images/wavedown.svg'%}" alt="" />
+</div>
+
+<div class="main">
+  <div class="div2 container">
+    <h2>Why US?</h2>
+    <div class="container">
+      <div class="card">
+        The doctor-patient ratio in our country is very low and fatal diseases like Cataract,Lung and Breast Cancer are
+        curable in most cases, if detected early. The lack of a robust medical infrastructure and a good number of
+        doctors who can suffice the need of people in the villages, costs many lives.With our project we plan on making
+        diagnosis easy and accessible to all.
+      </div>
+      <div class="card">
+        Our project allows the users to upload necessary medical scans and reports to detect various diseases without
+        the need of a doctor. We do not aim to replace doctors but guide the patient and inform them about their current
+        medical standing based on their reports and advise them on how urgent it is for them to consult a doctor .
+      </div>
+      <div class="card">
+        We use medical reports and run them through various Machine Learning and
+        Deep Learning models that we have built to classify and segment the reports. We make primary use of the
+        Convolutional Neural Networks for the processing of images, YoloV5 and Detectron2 for image segmentation and
+        Simpler Supervised Learning methods like Support Vector Machines, Random Forests and CatBoosting for things like
+        heart disease detection
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="totaldiv">
+  <img class="wave" src="{% static 'images/waveup.svg'%}" alt="" />
+  <div class="d-grid gap-2">
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <button class="custom" onclick="window.location.href=`{% url 'login' %}`">
+        {% if user.is_authenticated %}
+        Scan Now
+        {% else %}
+        Sign In
+        {% endif %}
+      </button>
+    </div>
+  </div>
+  <img class="wave" src="{% static 'images/wavefooter.png'%}" alt="" />
+</div>
+{% include 'footer.html' %}
+<style>
+  .image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),
+    url("{% static 'images/landing.png'%}");
+  }
+</style>
+{% endblock %}

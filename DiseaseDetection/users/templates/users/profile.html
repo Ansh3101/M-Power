@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+<header>
+  <div class="container">
+    <div class="profile">
+      <div class="profile-image">
+        <img src="{{user.profile.profile_pic.url}}" alt="" class="w-50 h-50">
+      </div>
+      <div class="profile-user-settings">
+        <h1 class="profile-user-name">{{user.username}}</h1>
+        <button class="btn profile-edit-btn" onclick="window.location.href=`{% url 'edit' %}`">Edit Profile</button>
+      </div>
+      <div class="profile-bio d-flex justify-center gap-20 w-full">
+        <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Name :</h6>
+            <h5 class="card-title">{{user.profile.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Email :</h6>
+            <p class="card-text">
+              {{user.profile.email}}
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">Age :</h6>
+            <p class="card-text">
+              {{user.profile.age}}
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">Blood Group :</h6>
+            <p>
+              {{user.profile.blood_group}}
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">Contact :</h6>
+            <p class="card-text">
+              {{user.profile.phone_number}}
+            </p>
+            <p>
+              {{user.profile.emergency_contact}}
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <a href="{% url 'dashboard'%}" class="card-link">Your Reports <i class="fa-solid fa-arrow-right"></i></a>
+            </h6>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem; height:fit-content">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Doctor Details :</h6>
+            <h5 class="card-title">{{user.profile.doctor}}</h5>
+            <p class="card-text">{{user.profile.doctor_number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<style>
+</style>
+{% endblock %}

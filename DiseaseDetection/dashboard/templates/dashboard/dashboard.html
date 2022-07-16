@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="m-20">
+  {% for report in cancer_reports %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{report.result}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+      <a href="{% url 'lung-report-details' report.data.id %}" class="card-link">More Details</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

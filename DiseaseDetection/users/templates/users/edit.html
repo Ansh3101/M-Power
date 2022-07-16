@@ -1,0 +1,188 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <form class="mt-8 space-y-6" action="{% url 'edit' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+          <div class="outer">
+            <img class="mx-auto h-40 w-auto" src="{{profile.profile_pic.url}}">
+            <div class="inner">
+              <input class="inputfile" type="file" name="profile_pic" accept="image/*">
+              <label>
+                <img src="{% static 'images/edit-button.png'%}" alt="">
+              </label>
+            </div>
+          </div>
+        </div>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Edit your account</h2>
+    </div>
+
+    <div class="rounded-md shadow-sm -space-y-px">
+      {% if not profile.name == " " %}
+      <div>
+        <label for="username" class="sr-only">Name</label>
+        <input id="username" name="name" type="text" required
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          value="{{profile.name}}">
+      </div>
+      {% else %}
+      <div>
+        <label for="username" class="sr-only">Name</label>
+        <input id="username" name="name" type="text" required
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Name">
+      </div>
+      {% endif%}
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" name="username" type="text" required
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          value="{{profile.username}}" placeholder="Username">
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="email-address" class="sr-only">Email</label>
+        <input id="email-address" name="email" type="email" required
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          value="{{profile.email}}" placeholder="Email">
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="password" class="sr-only">Age</label>
+        <input id="password" name="age" type="number"
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Age" value="{{profile.age}}">
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="confirm-password" class="sr-only">Phone Number</label>
+        <input id="confirm-password" type="number" name="phone_number" class=" appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+            placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+            focus:z-10 sm:text-sm" placeholder="Phone Number" value="{{profile.phone_number}}">
+      </div>
+    </div>
+
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="confirm-password" class="sr-only">Blood Group</label>
+        <select class="form-select" aria-label="Default select example" name="blood_group"
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+          <option selected>
+            {% if profile.blood_group %}
+            <p class="text-gray-900">{{profile.blood_group}}</p>
+            {% else %}
+            <p class="text-gray-900">Select Blood Group</p>
+            {% endif %}
+          </option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="confirm-password" class="sr-only">Doctor</label>
+        <input id="confirm-password" type="text" name="doctor"
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Doctor">
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="confirm-password" class="sr-only">Doctor Phone Number</label>
+        <input id="confirm-password" type="number" name="doctor_phone_number"
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Doctor Phone Number">
+      </div>
+    </div>
+    <div class="rounded-md shadow-sm -space-y-px">
+      <div>
+        <label for="confirm-password" class="sr-only">Emergency Contact</label>
+        <input id="confirm-password" type="number" name="emergency_contact"
+          class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Emergency Contact">
+      </div>
+    </div>
+
+    <div>
+      <button type="submit"
+        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+        </span>
+        Save
+      </button>
+    </div>
+    </form>
+  </div>
+</div>
+<style>
+  .container {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .outer {
+    margin: auto;
+    border-radius: 100%;
+    position: relative;
+  }
+
+  .inner {
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .inner:hover {
+    opacity: 0.90;
+  }
+
+  .inputfile {
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+  }
+
+  .inputfile+label {
+    font-size: 1.25rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    cursor: pointer;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .inputfile+label svg {
+    fill: #fff;
+  }
+</style>
+
+{% endblock %}

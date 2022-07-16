@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+.image {
+	width: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),
+		url("{% static 'images/landing.png'%}");
+	background-size: cover;
+	background-position: right;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.text h1 {
+	font-size: 8vw;
+	font-weight: 900;
+	color: rgb(255, 255, 255);
+	text-align: left;
+	padding-left: 5vw;
+	margin-top: 20vh;
+}
+
+.comitted {
+	margin: 5vh 0 10vh 6vw;
+	font-weight: 500;
+	font-size: 1.5em;
+	font-family: 'Source Code Pro';
+	color: #eee;
+	max-width: 47vw;
+}
+
+.container {
+	/* Align self in the centre */
+	margin-top: 40px;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.card {
+	max-width: 50vw !important;
+	padding: 20px 20px !important;
+	margin: 10px !important;
+	text-align: center;
+	font-size: 1.7em;
+	font-weight: 500;
+	color: rgb(29 78 138);
+	background-color: #bad2f9 !important;
+	border-radius: 15px !important;
+	/* justify-content: center; */
+}
+
+.main {
+	background: #6366f1;
+	padding: 20px;
+}
+
+.div2 h2 {
+	text-align: center;
+	color: white;
+	font-weight: 900;
+	font-size: 3.5em !important;
+}
+
+.wave {
+	width: 100%;
+}
+
+:root {
+	--text-color: #6366f1;
+	--shadow-color: rgba(77, 133, 190, 0.691);
+	--btn-color: hsl(210, 80%, 42%);
+	--bg-color: #141218;
+}
+
+#totaldiv {
+	background-color: var(--bg-color);
+}
+
+#button-div {
+	display: flex;
+	justify-content: center;
+	/* padding: 10vh; */
+	background-color: var(--bg-color);
+}
+.custom {
+	background-color: #6366f1;
+	height: 60px;
+	color: white;
+	font-size: 30px;
+	font-weight: 800;
+}
+
+.custom:hover {
+	opacity: 0.75;
+}
