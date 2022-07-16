@@ -1,8 +1,3 @@
-BMI Smoking AlcoholDrinking Stroke PhysicalHealth MentalHealth DiffWalking Sex AgeCategory Race Diabetic
-PhysicalActivity GenHealth SleepTime Asthma KidneyDisease SkinCancer
-0 0.055294 1.0 0.0 0.0 0.100000 1.0 0.0 0.0 0.583333 1.0 0.666667 1.0 1.00 0.173913 1.0 0.0 1.0
-
-
 {% extends 'main.html' %}
 {% block content %}
 <div>
@@ -18,11 +13,11 @@ PhysicalActivity GenHealth SleepTime Asthma KidneyDisease SkinCancer
         </div>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="#" method="POST">
+        <form action="{% url 'heart-disease' %}" method="POST">
           {% csrf_token %}
           <div class="shadow sm:rounded-md sm:overflow-hidden ">
-            {% for field in form %}
             <input type="text" hidden name="method" value="text">
+            {% for field in form %}
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
               <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-3 sm:col-span-2">
@@ -34,21 +29,21 @@ PhysicalActivity GenHealth SleepTime Asthma KidneyDisease SkinCancer
               </div>
             </div>
             {% endfor %}
-
-            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
-            </div>
           </div>
-        </form>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+          </div>
       </div>
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="hidden sm:block" aria-hidden="true">
-    <div class="py-5">
-      <div class="border-t border-gray-200"></div>
-    </div>
+<div class="hidden sm:block" aria-hidden="true">
+  <div class="py-5">
+    <div class="border-t border-gray-200"></div>
   </div>
+</div>
 </div>
 {% endblock %}

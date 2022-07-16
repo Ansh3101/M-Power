@@ -17,237 +17,33 @@
           {% csrf_token %}
           <div class="shadow sm:rounded-md sm:overflow-hidden ">
             <input type="text" hidden name="method" value="text">
+            {% for field in form %}
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
               <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
+                  <label for="company-website" class="block text-sm font-medium text-gray-700"> {{field.label}} </label>
                   <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
+                    {{field}}
                   </div>
                 </div>
               </div>
             </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> Do you smoke? </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <select name="" id="">
-                      <option value="">Yes</option>
-                      <option value="">No</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
-              <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-3 sm:col-span-2">
-                  <label for="company-website" class="block text-sm font-medium text-gray-700"> BMI </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number">
-                  </div>
-                </div>
-              </div>
-            </div>
-            BMI Smoking AlcoholDrinking Stroke PhysicalHealth MentalHealth DiffWalking Sex
-            AgeCategory Race Diabetic
-            PhysicalActivity GenHealth SleepTime Asthma KidneyDisease SkinCancer
-            0 No 16.60 Yes No No 3.0 30.0 No Female 55-59 White Yes Yes Very good 5.0 Yes No Yes
-            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
-            </div>
+            {% endfor %}
           </div>
-        </form>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+          </div>
       </div>
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="hidden sm:block" aria-hidden="true">
-    <div class="py-5">
-      <div class="border-t border-gray-200"></div>
-    </div>
+<div class="hidden sm:block" aria-hidden="true">
+  <div class="py-5">
+    <div class="border-t border-gray-200"></div>
   </div>
+</div>
 </div>
 {% endblock %}

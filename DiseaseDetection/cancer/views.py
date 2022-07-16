@@ -1,11 +1,10 @@
-from time import sleep
 from django.shortcuts import render,redirect
 from cancer.models import LungReport,LungCancerText
 from .forms import LungCancerTextForm
 import pickle 
-import sklearn
 import pandas as pd
 import os 
+import joblib
 
 def convert_bool(string):
   if string == "True":
@@ -13,7 +12,10 @@ def convert_bool(string):
   else:
     return False
 
-model = pickle.load(open(f'{os.path.abspath("")}/Models/finalized_model.sav', 'rb'))
+lung_model = pickle.load(open(f'{os.path.abspath("")}/Models/finalized_model.sav', 'rb'))
+brest_model = joblib.load(f'{os.path.abspath("")}/Models/brest_cancer.joblib')["model"]
+brest_model
+
 
 def lung_cancer(request):
   form = LungCancerTextForm()
@@ -35,7 +37,7 @@ def lung_cancer(request):
     swallowing_difficulty = convert_bool(request.POST["swallowing_difficulty"])
     chest_pain = convert_bool(request.POST["chest_pain"])
     data = pd.DataFrame([[gender,age,smoking,yellow,anxiety,peer,chronic,fatigue,allergy,wheezing,alcohol,coughing,shortness_of_breadth,swallowing_difficulty,chest_pain]])
-    result = model.predict(data)[0]
+    result = lung_model.predict(data)[0]
     result = "The state of your lung is very bad. Please consult a doctor."
     if form.is_valid():
       data = form.save()
@@ -51,9 +53,6 @@ def lung_cancer(request):
   return render(request,'cancer/lung_cancer.html',context)
 
 
-def brest_cancer(request):
-  return render(request,'cancer/brest_cancer.html')
-
 def result_page(request):
   result = request.GET["result"]
   context = {
@@ -61,8 +60,31 @@ def result_page(request):
   }
   return render(request,"cancer/result_page.html",context)
 
-def details(request,id):
-  lung_data = LungCancerText.objects.get(id=id)
-  print(lung_data)
-  context = {'detail':lung_data}
-  return render(request,'cancer/details.html',context)
+def brest_cancer(request):
+  if request.method == "POST":
+    form = BrestCancerForm(request.POST)
+    if form.is_valid():
+      form.save()
+    bmi = float(request.POST["bmi"])
+    smoking = convert_bool(request.POST["smoking"])
+    alcohol = convert_bool(request.POST["alcohol"])
+    stroke = convert_bool(request.POST["stroke"])
+    mental_heath = request.POST["mental_heath"]
+    diff_walking = convert_bool(request.POST["diff_walking"])
+    gender = convert_bool(request.POST["gender"])
+    age_category = float(request.POST["age_category"])
+    race = float(request.POST["race"])
+    physical_health = float(request.POST["physical_health"])
+    diabetic = float(request.POST["diabetic"])
+    GenHealth = float(request.POST["GenHealth"])
+    SleepTime = float(request.POST["SleepTime"])
+    Asthma = float(request.POST["Asthma"])
+    kidney_disease = float(request.POST["kidney_disease"])
+    skin_cancer = float(request.POST["skin_cancer"])
+    physical_a = convert_bool(request.POST['physical_activity'])
+    data = [bmi,smoking,alcohol,stroke,physical_health,mental_heath,diff_walking,gender,age_category,race,diabetic,PhysicalActivity,GenHealth,SleepTime,Asthma,kidney_disease,skin_cancer]
+  form = BrestCancerForm()
+  context = {
+    'form' : form
+  }
+  return render(request,'cancer/brest_cancer.html',context)
