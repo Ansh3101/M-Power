@@ -55,7 +55,7 @@ def edit_profile(request):
     user.username = request.POST["username"]
     user.name = request.POST["name"]
     user.email = request.POST["email"]
-    if  request.POST["age"] == "":
+    if request.POST["age"] != "":
       user.age = request.POST["age"]
     user.phone_number = request.POST["phone_number"]
     if request.POST["blood_group"] != "Open this select menu":
