@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% block content %}
+
 <div>
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
@@ -17,14 +18,13 @@
           {% csrf_token %}
           <div class="shadow sm:rounded-md sm:overflow-hidden ">
             {% for field in form %}
-            <input type="text" hidden name="method" value="text">
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6 ">
               <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-3 sm:col-span-2">
                   <label for="company-website" class="block text-sm font-medium text-gray-700"> {{field.label}} </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    {{field}}
-                  </div>
+                  <!-- <div class="mt-1 flex rounded-md shadow-sm"> -->
+                  {{field}}
+                  <!-- </div> -->
                 </div>
               </div>
             </div>

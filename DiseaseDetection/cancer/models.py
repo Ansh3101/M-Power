@@ -1,3 +1,4 @@
+from statistics import mode
 from django.db import models
 from users.models import Profile
 
@@ -28,6 +29,51 @@ class LungReport(models.Model):
   date = models.DateTimeField(auto_now_add=True)
   result = models.TextField(null=True,blank=True)
   data = models.OneToOneField(LungCancerText,on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return str(self.id)
+
+class BrestCancerText(models.Model):
+  user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+  area_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  area_se = models.DecimalField(decimal_places=255,max_digits=255)
+  area_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  compactness_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  compactness_se = models.DecimalField(decimal_places=255,max_digits=255)
+  compactness_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  concave_points_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  concave_points_se = models.DecimalField(decimal_places=255,max_digits=255)
+  concave_points_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  concavity_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  concavity_se = models.DecimalField(decimal_places=255,max_digits=255)
+  concavity_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  fractal_dimension_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  fractal_dimension_se = models.DecimalField(decimal_places=255,max_digits=255)
+  fractal_dimension_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  perimeter_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  perimeter_se = models.DecimalField(decimal_places=255,max_digits=255)
+  perimeter_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  radius_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  radius_se = models.DecimalField(decimal_places=255,max_digits=255)
+  radius_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  smoothness_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  smoothness_se = models.DecimalField(decimal_places=255,max_digits=255)
+  smoothness_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  symmetry_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  symmetry_se = models.DecimalField(decimal_places=255,max_digits=255)
+  symmetry_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  texture_mean = models.DecimalField(decimal_places=255,max_digits=255)
+  texture_se = models.DecimalField(decimal_places=255,max_digits=255)
+  texture_worst = models.DecimalField(decimal_places=255,max_digits=255)
+  
+  def __str__(self):
+    return str(self.user)
+  
+class BrestCancerReport(models.Model):
+  user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+  data = models.OneToOneField(BrestCancerText,on_delete=models.SET_NULL,null=True)
+  result = models.TextField()
+  date = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
     return str(self.id)

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from cancer.models import LungReport,LungCancerText
-from .forms import LungCancerTextForm
+from .forms import LungCancerTextForm,BrestCancerForm
 import pickle 
 import pandas as pd
 import os 
@@ -46,6 +46,7 @@ def lung_cancer(request):
       report.user = request.user.profile
       report.result = result
       report.save()
+      print("Hello WOrld")
       return redirect(f'/disease/results?result={result}')
   context = {
     'form':form,
@@ -65,24 +66,12 @@ def brest_cancer(request):
     form = BrestCancerForm(request.POST)
     if form.is_valid():
       form.save()
-    bmi = float(request.POST["bmi"])
-    smoking = convert_bool(request.POST["smoking"])
-    alcohol = convert_bool(request.POST["alcohol"])
-    stroke = convert_bool(request.POST["stroke"])
-    mental_heath = request.POST["mental_heath"]
-    diff_walking = convert_bool(request.POST["diff_walking"])
-    gender = convert_bool(request.POST["gender"])
-    age_category = float(request.POST["age_category"])
-    race = float(request.POST["race"])
-    physical_health = float(request.POST["physical_health"])
-    diabetic = float(request.POST["diabetic"])
-    GenHealth = float(request.POST["GenHealth"])
-    SleepTime = float(request.POST["SleepTime"])
-    Asthma = float(request.POST["Asthma"])
-    kidney_disease = float(request.POST["kidney_disease"])
-    skin_cancer = float(request.POST["skin_cancer"])
-    physical_a = convert_bool(request.POST['physical_activity'])
-    data = [bmi,smoking,alcohol,stroke,physical_health,mental_heath,diff_walking,gender,age_category,race,diabetic,PhysicalActivity,GenHealth,SleepTime,Asthma,kidney_disease,skin_cancer]
+      print("Valid")
+    else:
+      print(form.errors)
+    print(form.texture_se)
+    data = []
+    qwd
   form = BrestCancerForm()
   context = {
     'form' : form
