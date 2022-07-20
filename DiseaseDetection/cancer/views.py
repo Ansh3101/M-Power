@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from cancer.models import LungReport,LungCancerText
+from numpy import require
+from cancer.models import BrestCancerReport, LungReport,LungCancerText
 from .forms import LungCancerTextForm,BrestCancerForm
 import pickle 
 import pandas as pd
@@ -14,8 +15,6 @@ def convert_bool(string):
 
 lung_model = pickle.load(open(f'{os.path.abspath("")}/Models/finalized_model.sav', 'rb'))
 brest_model = joblib.load(f'{os.path.abspath("")}/Models/brest_cancer.joblib')["model"]
-brest_model
-
 
 def lung_cancer(request):
   form = LungCancerTextForm()
@@ -46,7 +45,6 @@ def lung_cancer(request):
       report.user = request.user.profile
       report.result = result
       report.save()
-      print("Hello WOrld")
       return redirect(f'/disease/results?result={result}')
   context = {
     'form':form,
@@ -65,13 +63,28 @@ def brest_cancer(request):
   if request.method == "POST":
     form = BrestCancerForm(request.POST)
     if form.is_valid():
+      _data = form.save(commit=False)
+      form.user = request.user.profile
       form.save()
       print("Valid")
     else:
       print(form.errors)
-    print(form.texture_se)
     data = []
-    qwd
+    for key,value in form.data.items():
+      if (key == "csrfmiddlewaretoken") or (key == "method"):
+        continue
+      data.append(value)
+    pred = brest_model.predict(data)
+    if pred == 1 :
+      result = "You have been diagnosed with the present cancer. We advise you to consult a doctor."
+    else:
+      result = "The diagnosis has not shown presence of cancer. if you still feel difficulty ,please consult a doctor."
+    report = BrestCancerReport()
+    report.user = request.user.profile
+    report.result = result
+    report.data = _data
+    report.save()
+    return redirect(f'/disease/results?result={result}')
   form = BrestCancerForm()
   context = {
     'form' : form

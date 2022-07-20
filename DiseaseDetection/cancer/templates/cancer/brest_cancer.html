@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block content %}
-<div>
+{% load static %}
+<div id="content">
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
   </div>
@@ -13,7 +14,7 @@
         </div>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="#" method="POST">
+        <form action="{% url 'brest-cancer'%}" method="POST" id="form">
           {% csrf_token %}
           <div class="shadow sm:rounded-md sm:overflow-hidden ">
             <input type="text" hidden name="method" value="text">
@@ -45,5 +46,10 @@
     <div class="border-t border-gray-200"></div>
   </div>
 </div>
+<div class="loader-parent">
+  <div class="hidden loader" id="loader">
+    {% include 'loader.html' %}
+  </div>
 </div>
+<script src="{% static 'js/loader.js' %}"></script>
 {% endblock %}

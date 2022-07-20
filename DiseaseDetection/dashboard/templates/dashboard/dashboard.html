@@ -36,4 +36,14 @@
   </div>
   {% endfor %}
 </div>
+<div class="m-20 main">
+  {% for report in brest_report %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{report.result}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

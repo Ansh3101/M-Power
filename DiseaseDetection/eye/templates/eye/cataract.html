@@ -1,8 +1,9 @@
 {% extends 'main.html' %}
 {% block content %}
-<div>
+{% load static %}
+<div id="content">
   <div class="mt-5 md:mt-0 md:col-span-2 p-10">
-    <form action="{% url 'cataract'%}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'cataract'%}" method="POST" enctype="multipart/form-data" id="form">
       {% csrf_token %}
       <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -37,4 +38,10 @@
     </form>
   </div>
 </div>
+<div class="loader-parent">
+  <div class="hidden loader" id="loader">
+    {% include 'loader.html' %}
+  </div>
+</div>
+<script src="{% static 'js/loader.js' %}"></script>
 {% endblock %}
