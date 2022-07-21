@@ -1,4 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
-{{result}}
+<div class="m-10 text-center">
+  {{result}}
+  <br>
+  <a href="{% url 'dashboard' %}">Go to all reports→</a>
+</div>
 {% endblock %}

@@ -6,44 +6,78 @@
 {% endblock %}
 
 {% block content %}
-<div class="m-20 main">
-  {% for report in cancer_reports %}
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{report.result}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+<div class="mt-2000">
+  {% if cancer_reports %}
+  <div class="m-20 d-flex flex-col gap-4">
+    <div>
+      <h1>Lung Cancer Reports</h1>
+    </div>
+    <div class="main">
+      {% for report in cancer_reports %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{report.result}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+          {% if report.image_data %}
+          <a download href="{{report.image_data.scan.url}}">↓</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
-  {% endfor %}
-</div>
-<div class="m-20 main">
-  {% for report in eye_reports %}
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{report.result}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+  {% endif %}
+  {% if eye_reports %}
+  <div class="m-20 d-flex flex-col gap-4">
+    <div>
+      <h1>Eye Reports</h1>
     </div>
-  </div>
-  {% endfor %}
-</div>
-<div class="m-20 main">
-  {% for report in heart_reports %}
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{report.result}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+    <div class="main">
+      {% for report in eye_reports %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{report.result}} <a download href="{{report.scan.url}}">↓</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+
+        </div>
+      </div>
+      {% endfor %}
     </div>
+    {%endif %}
   </div>
-  {% endfor %}
-</div>
-<div class="m-20 main">
-  {% for report in brest_report %}
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{report.result}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+  {%if heart_reports %}
+  <div class="m-20 d-flex flex-col gap-4">
+    <div>
+      <h1>Heart Reports</h1>
     </div>
+    <div class="main">
+      {% for report in heart_reports %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{report.result}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
+  {% endif %}
+  {%if brest_report %}
+  <div class="m-20 d-flex flex-col gap-4">
+    <div>
+      <h1>Breast Cancer Reports</h1>
+    </div>
+    <div class="main">
+      {% for report in brest_report %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{report.result}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{report.date}}</h6>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {%endif %}
+  </div>
 </div>
 {% endblock %}

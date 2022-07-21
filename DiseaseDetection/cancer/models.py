@@ -21,14 +21,18 @@ class LungCancerText(models.Model):
   shortness_of_breadth = models.CharField(max_length=255,choices=CHOICES)
   swallowing_difficulty  = models.CharField(max_length=255,choices=CHOICES)
   chest_pain  = models.CharField(max_length=255,choices=CHOICES)
-  
+
+class LungCancerImage(models.Model):
+  scan = models.FileField(upload_to="lung-cancer/")
   def __str__(self):
     return str(self.id)
+  
 class LungReport(models.Model):
   user = models.ForeignKey(Profile,on_delete=models.SET_NULL,null=True)
   date = models.DateTimeField(auto_now_add=True)
   result = models.TextField(null=True,blank=True)
-  data = models.OneToOneField(LungCancerText,on_delete=models.CASCADE)
+  data = models.OneToOneField(LungCancerText,on_delete=models.CASCADE,null=True)
+  image_data = models.OneToOneField(LungCancerImage,on_delete=models.CASCADE,null=True)
   
   def __str__(self):
     return str(self.id)
