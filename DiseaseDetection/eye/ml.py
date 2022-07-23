@@ -84,7 +84,7 @@ def getModel():
             return torch.sigmoid(self.network(batch))
     model = EfficientNetB0()
     model = model.to('mps')
-    model.load_state_dict(torch.load('/Users/deveshkedia/Desktop/Projects/Doing/M-Power/DiseaseDetection/Models/model_trained.pth'))
+    model.load_state_dict(torch.load('/Users/anshumantekriwal/Documents/GitHub/M-Power/Cataract, Glaucoma & Uveitis/secondary_model.pth'))
     model.eval()
     return model
 val_transforms = torchvision.transforms.Compose([
