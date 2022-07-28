@@ -1,2 +1,2 @@
 # M-Power
-Code Repository For "M-Power": An AI-Powered Diagnostics Tool
+## Code Repository For M-Power: An AI-Powered Diagnostics Tool
